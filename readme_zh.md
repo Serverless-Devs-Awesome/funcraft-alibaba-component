@@ -1,8 +1,8 @@
-# Preface
-  
-  Quick use of alicloud funcraft tool
+# 前言
 
-# Test
+快速使用阿里云 Funcraft 工具
+
+# 测试
 
 template.yaml
 
@@ -17,7 +17,7 @@ FunDemo:
 ```
 
 
-# Complete configuration
+# 完整配置
 
 ```
 FunDemo:
@@ -29,13 +29,13 @@ FunDemo:
     Config: s
 ```
 
-# Parameter details
+# 参数详情
 
-| Name |  Required  |  Type  |  Description  |
+| 参数名 |  必填  |  类型  |  参数描述  |
 | --- |  ---  |  ---  |  ---  |
-| Region | True | Enum | Region |
-| Config | True | Enum | Base config |
+| Region | True | Enum | 地域 |
+| Config | True | Enum | 基础配置 |
 
-# Operation and fun related configuration
+# 操作与Fun相关配置
 
-Detailed reference： [https://github.com/alibaba/funcraft/blob/master/docs/specs/2018-04-03-zh-cn.md](https://github.com/alibaba/funcraft/blob/master/docs/specs/2018-04-03-zh-cn.md)
+详细参考： [https://github.com/alibaba/funcraft/blob/master/docs/specs/2018-04-03.md](https://github.com/alibaba/funcraft/blob/master/docs/specs/2018-04-03.md)

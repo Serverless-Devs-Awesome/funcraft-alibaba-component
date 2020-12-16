@@ -2,7 +2,7 @@ Type: Component
 Name: fun
 Provider:
   - Alibaba
-Version: 0.0.2
+Version: 0.0.7
 Description:
   zh: 快速使用Funcruft风格操作阿里云Serverless服务
   en: Quickly use funcraft style to operate alicloud serverless service

@@ -4,6 +4,5 @@
   "dependencies": {
     "@serverless-devs/s-core": "^0.0.22",
     "@alicloud/fun": "^3.6.20",
-    "node-expect": "^0.1.0"
   }
 }

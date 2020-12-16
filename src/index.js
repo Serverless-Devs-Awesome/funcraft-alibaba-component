@@ -14,11 +14,13 @@ class MyComponent extends Component {
 
     async install(inputs) {
         const {Commands, Parameters} = this.args(inputs.Args)
+        process.argv = ['', ''].concat(inputs.Args.split(" "))
         require('@alicloud/fun/bin/fun-install')
     }
 
     async build(inputs) {
         await this.funConfig(inputs)
+        process.argv = ['', ''].concat(inputs.Args.split(" "))
         require('@alicloud/fun/bin/fun-build')
     }
 
@@ -26,6 +28,7 @@ class MyComponent extends Component {
         await this.funConfig(inputs)
         const {Commands, Parameters} = this.args(inputs.Args)
         if (Commands.length == 0) {
+            process.argv = ['', ''].concat(inputs.Args.split(" "))
             require('@alicloud/fun/bin/fun-local')
         } else if (Commands[0] == "invoke") {
             process.argv = ['', ''].concat(inputs.Args.split(" ").slice(1,))
@@ -40,6 +43,7 @@ class MyComponent extends Component {
         await this.funConfig(inputs)
         const {Commands, Parameters} = this.args(inputs.Args)
         if (Commands.length == 0) {
+            process.argv = ['', ''].concat(inputs.Args.split(" "))
             require('@alicloud/fun/bin/fun-edge')
         } else if (Commands[0] == "invoke") {
             process.argv = ['', ''].concat(inputs.Args.split(" ").slice(1,))
@@ -55,6 +59,7 @@ class MyComponent extends Component {
 
     async validate(inputs) {
         await this.funConfig(inputs)
+        process.argv = ['', ''].concat(inputs.Args.split(" "))
         require('@alicloud/fun/bin/fun-validate')
     }
 
@@ -68,6 +73,7 @@ class MyComponent extends Component {
         await this.funConfig(inputs)
         const {Commands, Parameters} = this.args(inputs.Args)
         if (Commands.length == 0) {
+            process.argv = ['', ''].concat(inputs.Args.split(" "))
             require('@alicloud/fun/bin/fun-nas')
         } else if (Commands[0] == "cp") {
             process.argv = ['', ''].concat(inputs.Args.split(" ").slice(1,))
@@ -92,11 +98,13 @@ class MyComponent extends Component {
 
     async package(inputs) {
         await this.funConfig(inputs)
+        process.argv = ['', ''].concat(inputs.Args.split(" "))
         require('@alicloud/fun/bin/fun-package')
     }
 
     async invoke(inputs) {
         await this.funConfig(inputs)
+        process.argv = ['', ''].concat(inputs.Args.split(" "))
         require('@alicloud/fun/bin/fun-invoke')
     }
 
