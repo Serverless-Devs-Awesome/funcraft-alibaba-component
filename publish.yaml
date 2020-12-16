@@ -1,0 +1,85 @@
+Type: Component
+Name: fun
+Provider:
+  - Alibaba
+Version: 0.0.2
+Description:
+  zh: 快速使用Funcruft风格操作阿里云Serverless服务
+  en: Quickly use funcraft style to operate alicloud serverless service
+HomePage: https://github.com/alibaba/funcraft
+Tags: #标签详情
+  - zh: Fun
+    en: Fun
+  - zh: Serverless
+    en: Serverless
+Category: 其他
+Service:
+  - Name: 函数计算
+    Authorities:
+      - zh: 全部权限
+        en: All permissions
+Commands:
+  install:
+    zh: 安装依赖
+    en: Install dependencies which are described in fun.yml
+  build:
+    zh: 构建项目
+    en: Build the dependencies
+  local:
+    zh: 本地调试
+    en: Run your serverless application locally
+  edge:
+    zh: Edge调试
+    en: Run your serverless application at edge
+  validate:
+    zh: 校验模板
+    en: Validate a fun template
+  deploy:
+    zh: 部署项目
+    en: Deploy a fun application
+  nas:
+    zh: 操作Nas
+    en: Operate NAS file system
+  package:
+    zh: 打包项目
+    en: Package a Function Compute application
+  invoke:
+    zh: 远程调试
+    en: Remote invoke function
+Properties:
+  Region: # 参数
+    Description:
+      zh: 参数描述
+      en: English
+    Required: true # 参数必选，true/false
+    Type: # 参数类型
+      - Enum:
+          - cn-beijing
+          - cn-hangzhou
+          - cn-shanghai
+          - cn-qingdao
+          - cn-zhangjiakou
+          - cn-huhehaote
+          - cn-shenzhen
+          - cn-chengdu
+          - cn-hongkong
+          - ap-southeast-1
+          - ap-southeast-2
+          - ap-southeast-3
+          - ap-southeast-5
+          - ap-northeast-1
+          - eu-central-1
+          - eu-west-1
+          - us-west-1
+          - us-east-1
+          - ap-south-1
+    Config:
+      Description:
+        zh: 基础配置
+        en: Base config
+      Required: false
+      Default: s
+      Type:
+        - Enum:
+            - s
+            - fun
