@@ -2,7 +2,7 @@ Type: Component
 Name: fun
 Provider:
   - Alibaba
-Version: 0.0.7
+Version: 0.0.8
 Description:
   zh: 快速使用Funcruft风格操作阿里云Serverless服务
   en: Quickly use funcraft style to operate alicloud serverless service
@@ -83,3 +83,11 @@ Properties:
         - Enum:
             - s
             - fun
+    Template:
+      Description:
+        zh: Fun 工具的配置文件
+        en: The config file for Fun
+      Required: false
+      Default: template.yaml
+      Type:
+        - String

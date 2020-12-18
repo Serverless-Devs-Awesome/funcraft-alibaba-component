@@ -35,6 +35,7 @@ FunDemo:
 | --- |  ---  |  ---  |  ---  |
 | Region | True | Enum | Region |
 | Config | True | Enum | Base config |
+| Template | False | String | The config file for Fun，default is `template.yaml` |
 
 # Operation and fun related configuration
 
