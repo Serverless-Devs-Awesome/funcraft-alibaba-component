@@ -19,6 +19,20 @@ class MyComponent extends Component {
         }
     }
 
+    async init(inputs) {
+        const {Commands, Parameters} = this.args(inputs.Args)
+        process.argv = ['', ''].concat(inputs.Args.split(" "))
+        await this.addTemplate(inputs)
+        require('@alicloud/fun/bin/fun-init')
+    }
+
+    async config(inputs) {
+        const {Commands, Parameters} = this.args(inputs.Args)
+        process.argv = ['', ''].concat(inputs.Args.split(" "))
+        await this.addTemplate(inputs)
+        require('@alicloud/fun/bin/fun-config')
+    }
+
     async install(inputs) {
         const {Commands, Parameters} = this.args(inputs.Args)
         process.argv = ['', ''].concat(inputs.Args.split(" "))
