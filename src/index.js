@@ -14,9 +14,12 @@ class MyComponent extends Component {
     async funConfig(inputs) {
         if (inputs.Properties.Config == undefined || inputs.Properties.Config == "s") {
             inputs.Credentials = await this.credentials(inputs)
-            process.env.ACCOUNT_ID = inputs.Credentials.AccountID
-            process.env.ACCESS_KEY_ID = inputs.Credentials.AccessKeyID
-            process.env.ACCESS_KEY_SECRET = inputs.Credentials.AccessKeySecret
+            process.env.ACCOUNT_ID = inputs.Credentials.AccountID || inputs.Credentials.accountId || inputs.Credentials.ACCOUNT_ID
+            process.env.ACCESS_KEY_ID = inputs.Credentials.AccessKeyID || inputs.Credentials.accessKeyId || inputs.Credentials.ACCESS_KEY_ID
+            process.env.ACCESS_KEY_SECRET = inputs.Credentials.AccessKeySecret || inputs.Credentials.accessKeySecret || inputs.Credentials.ACCESS_KEY_SECRET
+            if(inputs.Credentials.SecurityToken || inputs.Credentials.securityToken || inputs.Credentials.SECURITY_TOKEN){
+                process.env.SECURITY_TOKEN = inputs.Credentials.SecurityToken || inputs.Credentials.securityToken || inputs.Credentials.SECURITY_TOKEN
+            }
         }
         process.env.REGION = inputs.Properties.Region || "cn-hangzhou"
     }
@@ -36,27 +39,28 @@ class MyComponent extends Component {
         await this.funConfig(inputs)
         await this.setArgv(inputs.Args)
         await this.addTemplate(inputs)
-        require('@alicloud/fun/bin/fun-init')
+        await require('@alicloud/fun/bin/fun-init')
     }
 
     async config(inputs) {
         await this.setArgv(inputs.Args)
         await this.addTemplate(inputs)
-        require('@alicloud/fun/bin/fun-config')
+        await require('@alicloud/fun/bin/fun-config')
     }
 
     async install(inputs) {
+        console.log(inputs)
         await this.funConfig(inputs)
         await this.setArgv(inputs.Args)
         await this.addTemplate(inputs)
-        require('@alicloud/fun/bin/fun-install')
+        await require('@alicloud/fun/bin/fun-install')
     }
 
     async build(inputs) {
         await this.funConfig(inputs)
         await this.setArgv(inputs.Args)
         await this.addTemplate(inputs)
-        require('@alicloud/fun/bin/fun-build')
+        await require('@alicloud/fun/bin/fun-build')
     }
 
     async local(inputs) {
@@ -65,17 +69,17 @@ class MyComponent extends Component {
         if (Commands.length == 0) {
             await this.setArgv(inputs.Args)
             await this.addTemplate(inputs)
-            require('@alicloud/fun/bin/fun-local')
+            await require('@alicloud/fun/bin/fun-local')
         } else if (Commands[0] == "invoke") {
             const args = await this.trim(inputs.Args.replace(Commands[0], ""))
             await this.setArgv(args)
             await this.addTemplate(inputs)
-            require('@alicloud/fun/bin/fun-local-invoke')
+            await require('@alicloud/fun/bin/fun-local-invoke')
         } else if (Commands[0] == "start") {
             const args = await this.trim(inputs.Args.replace(Commands[0], ""))
             await this.setArgv(args)
             await this.addTemplate(inputs)
-            require('@alicloud/fun/bin/fun-local-start')
+            await require('@alicloud/fun/bin/fun-local-start')
         }
     }
 
@@ -85,22 +89,22 @@ class MyComponent extends Component {
         if (Commands.length == 0) {
             await this.setArgv(inputs.Args)
             await this.addTemplate(inputs)
-            require('@alicloud/fun/bin/fun-edge')
+            await require('@alicloud/fun/bin/fun-edge')
         } else if (Commands[0] == "invoke") {
             const args = await this.trim(inputs.Args.replace(Commands[0], ""))
             await this.setArgv(args)
             await this.addTemplate(inputs)
-            require('@alicloud/fun/bin/fun-edge-invoke')
+            await require('@alicloud/fun/bin/fun-edge-invoke')
         } else if (Commands[0] == "start") {
             const args = await this.trim(inputs.Args.replace(Commands[0], ""))
             await this.setArgv(args)
             await this.addTemplate(inputs)
-            require('@alicloud/fun/bin/fun-edge-start')
+            await require('@alicloud/fun/bin/fun-edge-start')
         } else if (Commands[0] == "stop") {
             const args = await this.trim(inputs.Args.replace(Commands[0], ""))
             await this.setArgv(args)
             await this.addTemplate(inputs)
-            require('@alicloud/fun/bin/fun-edge-stop')
+            await require('@alicloud/fun/bin/fun-edge-stop')
         }
     }
 
@@ -108,14 +112,14 @@ class MyComponent extends Component {
         await this.funConfig(inputs)
         await this.setArgv(inputs.Args)
         await this.addTemplate(inputs)
-        require('@alicloud/fun/bin/fun-validate')
+        await require('@alicloud/fun/bin/fun-validate')
     }
 
     async deploy(inputs) {
         await this.funConfig(inputs)
         await this.setArgv(inputs.Args)
         await this.addTemplate(inputs)
-        require('@alicloud/fun/bin/fun-deploy')
+        await require('@alicloud/fun/bin/fun-deploy')
     }
 
     async nas(inputs) {
@@ -124,37 +128,37 @@ class MyComponent extends Component {
         if (Commands.length == 0) {
             await this.setArgv(inputs.Args)
             await this.addTemplate(inputs)
-            require('@alicloud/fun/bin/fun-nas')
+            await require('@alicloud/fun/bin/fun-nas')
         } else if (Commands[0] == "cp") {
             const args = await this.trim(inputs.Args.replace(Commands[0], ""))
             await this.setArgv(args)
             await this.addTemplate(inputs)
-            require('@alicloud/fun/bin/fun-nas-cp')
+            await require('@alicloud/fun/bin/fun-nas-cp')
         } else if (Commands[0] == "info") {
             const args = await this.trim(inputs.Args.replace(Commands[0], ""))
             await this.setArgv(args)
             await this.addTemplate(inputs)
-            require('@alicloud/fun/bin/fun-nas-info')
+            await require('@alicloud/fun/bin/fun-nas-info')
         } else if (Commands[0] == "init") {
             const args = await this.trim(inputs.Args.replace(Commands[0], ""))
             await this.setArgv(args)
             await this.addTemplate(inputs)
-            require('@alicloud/fun/bin/fun-nas-init')
+            await require('@alicloud/fun/bin/fun-nas-init')
         } else if (Commands[0] == "ls") {
             const args = await this.trim(inputs.Args.replace(Commands[0], ""))
             await this.setArgv(args)
             await this.addTemplate(inputs)
-            require('@alicloud/fun/bin/fun-nas-ls')
+            await require('@alicloud/fun/bin/fun-nas-ls')
         } else if (Commands[0] == "rm") {
             const args = await this.trim(inputs.Args.replace(Commands[0], ""))
             await this.setArgv(args)
             await this.addTemplate(inputs)
-            require('@alicloud/fun/bin/fun-nas-rm')
+            await require('@alicloud/fun/bin/fun-nas-rm')
         } else if (Commands[0] == "sync") {
             const args = await this.trim(inputs.Args.replace(Commands[0], ""))
             await this.setArgv(args)
             await this.addTemplate(inputs)
-            require('@alicloud/fun/bin/fun-nas-sync')
+            await require('@alicloud/fun/bin/fun-nas-sync')
         }
     }
 
@@ -162,14 +166,14 @@ class MyComponent extends Component {
         await this.funConfig(inputs)
         await this.setArgv(inputs.Args)
         await this.addTemplate(inputs)
-        require('@alicloud/fun/bin/fun-package')
+        await require('@alicloud/fun/bin/fun-package')
     }
 
     async invoke(inputs) {
         await this.funConfig(inputs)
         await this.setArgv(inputs.Args)
         await this.addTemplate(inputs)
-        require('@alicloud/fun/bin/fun-invoke')
+        await require('@alicloud/fun/bin/fun-invoke')
     }
 
 }

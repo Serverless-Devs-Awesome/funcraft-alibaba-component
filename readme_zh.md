@@ -35,7 +35,6 @@ FunDemo:
 | --- |  ---  |  ---  |  ---  |
 | Region | True | Enum | 地域 |
 | Config | True | Enum | 基础配置 |
-| Template | False | String | Fun的配置文件，默认为`template.yaml` |
 
 # 操作与Fun相关配置
 
