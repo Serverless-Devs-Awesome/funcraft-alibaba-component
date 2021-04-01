@@ -2,7 +2,7 @@ Type: Component
 Name: fun
 Provider:
   - 阿里云
-Version: 0.0.20
+Version: 0.0.21
 Description: 快速使用Funcruft风格操作阿里云Serverless服务
 HomePage: https://github.com/alibaba/funcraft
 Tags: #标签详情
